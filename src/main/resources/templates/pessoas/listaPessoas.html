@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <title>Sistema</title>
+</head>
+<body> 
+    <div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+
+    <div class="container">
+        <br>
+        <h4> Últimos adicionados </h4>
+        <hr>
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <th scope="col">Nome</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ação </th>
+            </thead>
+            <tr scope="row" th:each="pessoas : ${Plist}">
+                <td th:text="${pessoas.nome}"></td>
+                <td th:text="${pessoas.idade}"></td>
+                <td th:text="${pessoas.status}"></td>
+
+                <td>
+                    <a class="btn btn-primary" th:href="@{edit/{id}(id=${pessoas.id})}">
+                        <i class="fas fa-edit"></i> Editar
+                    </a>
+                    <a class="btn btn-danger" th:href="@{delete/{id}(id=${pessoas.id})}">
+                        <i class="fas fa-times"></i>
+                         Excluir
+                    </a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+
+
+
+
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

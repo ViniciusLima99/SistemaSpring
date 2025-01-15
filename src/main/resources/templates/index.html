@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <title>Sistema</title>
+</head>
+<body>
+    <div style="margin: 0; text-align:center;" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Seja bem-vindo: <span th:text="${session.usuarioLogado.userN}"></span></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <div th:replace="~{fragmentos/fragmentos :: cabecalho}"></div>
+
+    <section class="neo-section" style="background-image: url('img/fundo.jpg')">
+        <div class="sombra"></div>
+        <div class="texto-main">
+            <h1 class="texto-titulo">Sistema</h1>
+
+            <div class="botoes"></div>
+            <div class="wm text-center">
+                <a th:href="@{inserirPessoa}"><h5 class="btn btnX" style="width:200px;"> CADASTRAR</h5></a>
+            </div>
+            <div class="wm"  >
+                <a th:href="@{/filtro}"><h5 class="btn btnX" style="width:200px;"> ENCONTRAR</h5></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </section>
+
+    <div th:replace="~{fragmentos/fragmentos :: rodape}"></div>
+
+
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
