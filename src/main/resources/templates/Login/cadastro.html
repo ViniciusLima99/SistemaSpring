@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <title>Login</title>
+</head>
+<body>
+    <div class="login-form">
+        <div class="container">
+            <div class="main-div">
+                <div class="texto-header">
+                    <h2>Cadastro de usuário</h2>
+                    <p>Crie seu usuário no sistema</p>
+                </div>
+                <form action="salvarUsuario" method="post" th:object="${usuario}">
+                    <div class="form-group">
+                        <input type="email" class="form-control" th:field="*{email}" placeholder="E-mail">
+                        <div th:if="${#fields.hasErrors('email')}" class="error">
+                            <span class="text-danger" th:errors="*{email}"></span>
+                        </div>
+                        <div th:if="${emailError}" class="error">
+                            <span class="text-danger" th:text="${emailError}"></span>
+                        </div>
+                        <div th:if="${inputError}" class="error">
+                            <span class="text-danger" th:text="${inputError}"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" th:field="*{userN}" placeholder="Username">
+                        <div th:if="${#fields.hasErrors('userN')}" class="error">
+                            <span class="text-danger" th:errors="*{userN}"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" th:field="*{senha}" placeholder="Insira sua senha">
+                        <div th:if="${#fields.hasErrors('senha')}" class="error">
+                            <span class="text-danger" th:errors="*{senha}"></span>
+                        </div>
+                        <div th:if="${cryptoError}" class="error">
+                            <span class="text-danger" th:text="${cryptoError}"></span>
+                        </div>
+                    </div>
+                    <div class="cadastro">
+                        <a th:href="@{/}">Já tem cadastro? Faça login aqui.</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
